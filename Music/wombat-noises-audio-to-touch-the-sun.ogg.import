@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/wombat-noises-audio-to-touch-the-sun.ogg-c5ca62a4925b00bed129ccc0a145bd59.oggstr"
+
+[deps]
+
+source_file="res://Music/wombat-noises-audio-to-touch-the-sun.ogg"
+dest_files=[ "res://.import/wombat-noises-audio-to-touch-the-sun.ogg-c5ca62a4925b00bed129ccc0a145bd59.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
