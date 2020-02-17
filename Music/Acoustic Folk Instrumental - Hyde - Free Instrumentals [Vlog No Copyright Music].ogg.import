@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Acoustic Folk Instrumental - Hyde - Free Instrumentals [Vlog No Copyright Music].ogg-d1a0647d3bff1a63351c05c8658c98a1.oggstr"
+
+[deps]
+
+source_file="res://Music/Acoustic Folk Instrumental - Hyde - Free Instrumentals [Vlog No Copyright Music].ogg"
+dest_files=[ "res://.import/Acoustic Folk Instrumental - Hyde - Free Instrumentals [Vlog No Copyright Music].ogg-d1a0647d3bff1a63351c05c8658c98a1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
