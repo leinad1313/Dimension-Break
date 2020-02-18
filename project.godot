@@ -16,10 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Dimension Break"
+config/description="Dimension Break a SiFi RPG created, licensed and published by Daniel Muench"
 run/main_scene="res://Scenes/TitleScreen.tscn"
-boot_splash/image="res://GUI/TopLogo.png"
+boot_splash/image="res://TopLogo.png"
 boot_splash/use_filter=false
-config/icon="res://icon.png"
+boot_splash/bg_color=Color( 1, 1, 1, 1 )
+config/icon="res://iconDB.png"
+config/macos_native_icon="res://iconDB.png"
+config/windows_native_icon="res://TopLogoIco.ico"
 
 [autoload]
 
