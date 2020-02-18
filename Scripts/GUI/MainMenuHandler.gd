@@ -1,5 +1,6 @@
 extends Control
 
+
 onready var Root = get_node("/root")
 onready var MainMenu = get_node("MainMenu")
 onready var OptionsMenu = get_node("OptionsMenu")
@@ -32,11 +33,6 @@ func _ready():
 	tweenMain.interpolate_property(mainInnerContainer, "rect_position", mainInnerStartRect-Vector2(3000,320), mainInnerStartRect+Vector2(0,0), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tweenMain.start()
 
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 
 func _on_Exit_pressed():

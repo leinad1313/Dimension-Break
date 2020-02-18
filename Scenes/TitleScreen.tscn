@@ -1,6 +1,6 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=34 format=2]
 
-[ext_resource path="res://GUI/FullLogo.png" type="Texture" id=1]
+[ext_resource path="res://GUI/FullLogoWhite.png" type="Texture" id=1]
 [ext_resource path="res://GUI/Buttons/NewGame.png" type="Texture" id=2]
 [ext_resource path="res://GUI/Buttons/LoadGame.png" type="Texture" id=3]
 [ext_resource path="res://GUI/Buttons/ExitGame.png" type="Texture" id=4]
@@ -18,13 +18,25 @@
 [ext_resource path="res://GUI/Labels/GameResolutionLabel.png" type="Texture" id=16]
 [ext_resource path="res://GUI/Buttons/ArrowButton.png" type="Texture" id=17]
 [ext_resource path="res://GUI/Styles/SeparatorThickStyle.tres" type="StyleBox" id=18]
-[ext_resource path="res://Music/Acoustic Folk Instrumental - Hyde - Free Instrumentals [Vlog No Copyright Music].ogg" type="AudioStream" id=19]
+[ext_resource path="res://Music/wombat-noises-audio-to-touch-the-sun.ogg" type="AudioStream" id=19]
 [ext_resource path="res://GUI/Minecraft.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://GUI/Styles/MainMenuTheme.theme" type="Theme" id=21]
 [ext_resource path="res://GUI/Labels/MusicVolumeLabel.png" type="Texture" id=22]
+[ext_resource path="res://GUI/BackgroundMainMenuNoStars1.svg" type="Texture" id=23]
+[ext_resource path="res://GUI/BackgroundMainMenuNoStars2.svg" type="Texture" id=24]
+[ext_resource path="res://GUI/BackgroundMainMenuNoStars4.svg" type="Texture" id=25]
+[ext_resource path="res://GUI/BackgroundMainMenuNoStars3.svg" type="Texture" id=26]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 1, 1, 1 )
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.298039, 0.298039, 0.298039, 0.176471 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -40,6 +52,7 @@ bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_color = Color( 1, 1, 1, 1 )
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -51,13 +64,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_styles/panel = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 957.944, 541.457 )
+scale = Vector2( 8.16336, 8.55957 )
+frames = SubResource( 8 )
+frame = 1
+playing = true
 
 [node name="MainMenu" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -83,7 +95,7 @@ custom_constants/separation = 20
 
 [node name="Logo" type="TextureRect" parent="MainMenu/Container"]
 margin_right = 1840.0
-margin_bottom = 490.0
+margin_bottom = 420.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 1 )
@@ -93,28 +105,41 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="InnerContainer" type="VBoxContainer" parent="MainMenu/Container"]
-margin_top = 510.0
-margin_right = 1840.0
-margin_bottom = 1000.0
+[node name="Panel" type="Panel" parent="MainMenu/Container/Logo"]
+margin_left = -1.0
+margin_top = 471.0
+margin_right = 1841.0
+margin_bottom = 987.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator2" type="HSeparator" parent="MainMenu/Container"]
+margin_top = 440.0
+margin_right = 1840.0
+margin_bottom = 510.0
+custom_styles/separator = ExtResource( 18 )
+custom_constants/separation = 70
+
+[node name="InnerContainer" type="VBoxContainer" parent="MainMenu/Container"]
+margin_top = 530.0
+margin_right = 1840.0
+margin_bottom = 950.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 21 )
 custom_constants/separation = 35
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSeparator2" type="HSeparator" parent="MainMenu/Container/InnerContainer"]
-margin_right = 1840.0
-margin_bottom = 70.0
-custom_styles/separator = ExtResource( 18 )
-custom_constants/separation = 70
-
 [node name="NewGame" type="TextureButton" parent="MainMenu/Container/InnerContainer"]
-margin_top = 105.0
 margin_right = 1840.0
-margin_bottom = 158.0
+margin_bottom = 78.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 shortcut_in_tooltip = false
@@ -128,9 +153,9 @@ __meta__ = {
 }
 
 [node name="LoadGame" type="TextureButton" parent="MainMenu/Container/InnerContainer"]
-margin_top = 193.0
+margin_top = 113.0
 margin_right = 1840.0
-margin_bottom = 246.0
+margin_bottom = 191.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 shortcut_in_tooltip = false
@@ -141,9 +166,9 @@ expand = true
 stretch_mode = 5
 
 [node name="Options" type="TextureButton" parent="MainMenu/Container/InnerContainer"]
-margin_top = 281.0
+margin_top = 226.0
 margin_right = 1840.0
-margin_bottom = 334.0
+margin_bottom = 304.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 shortcut_in_tooltip = false
@@ -154,9 +179,9 @@ expand = true
 stretch_mode = 5
 
 [node name="Exit" type="TextureButton" parent="MainMenu/Container/InnerContainer"]
-margin_top = 369.0
+margin_top = 339.0
 margin_right = 1840.0
-margin_bottom = 422.0
+margin_bottom = 420.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 shortcut_in_tooltip = false
@@ -166,14 +191,17 @@ texture_hover = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 
-[node name="HSeparator" type="HSeparator" parent="MainMenu/Container/InnerContainer"]
-margin_top = 457.0
+[node name="Tween" type="Tween" parent="MainMenu/Container/InnerContainer"]
+
+[node name="HSeparator" type="HSeparator" parent="MainMenu/Container"]
+margin_top = 970.0
 margin_right = 1840.0
-margin_bottom = 487.0
+margin_bottom = 1000.0
 custom_styles/separator = ExtResource( 18 )
 custom_constants/separation = 30
-
-[node name="Tween" type="Tween" parent="MainMenu/Container/InnerContainer"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="OptionsMenu" type="MarginContainer" parent="."]
 visible = false
@@ -185,6 +213,18 @@ custom_constants/margin_right = 40
 custom_constants/margin_top = 40
 custom_constants/margin_left = 40
 custom_constants/margin_bottom = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="OptionsMenu"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 1880.0
+margin_bottom = 1040.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -203,9 +243,16 @@ margin_bottom = 1000.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HSeparator3" type="HSeparator" parent="OptionsMenu/HBoxContainer/VBox1"]
+[node name="MaginSeperators3" type="MarginContainer" parent="OptionsMenu/HBoxContainer/VBox1"]
 margin_right = 891.0
 margin_bottom = 4.0
+custom_constants/margin_left = 40
+
+[node name="HSeparator3" type="HSeparator" parent="OptionsMenu/HBoxContainer/VBox1/MaginSeperators3"]
+margin_left = 40.0
+margin_right = 891.0
+margin_bottom = 4.0
+size_flags_vertical = 0
 custom_styles/separator = ExtResource( 18 )
 
 [node name="HBoxResolution" type="HBoxContainer" parent="OptionsMenu/HBoxContainer/VBox1"]
@@ -215,8 +262,15 @@ margin_bottom = 333.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="VSeparator3" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox1/HBoxResolution"]
+margin_right = 60.0
+margin_bottom = 325.0
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 60
+
 [node name="GameResolution" type="TextureRect" parent="OptionsMenu/HBoxContainer/VBox1/HBoxResolution"]
-margin_right = 416.0
+margin_left = 64.0
+margin_right = 431.0
 margin_bottom = 325.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -225,18 +279,18 @@ expand = true
 stretch_mode = 6
 
 [node name="VSeparator2" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox1/HBoxResolution"]
-margin_left = 420.0
-margin_right = 470.0
+margin_left = 435.0
+margin_right = 485.0
 margin_bottom = 325.0
 custom_styles/separator = SubResource( 2 )
 custom_constants/separation = 50
 
 [node name="OptionButton" type="OptionButton" parent="OptionsMenu/HBoxContainer/VBox1/HBoxResolution"]
-margin_left = 474.0
+margin_left = 489.0
 margin_top = 152.0
-margin_right = 891.0
+margin_right = 856.0
 margin_bottom = 172.0
-size_flags_horizontal = 7
+size_flags_horizontal = 3
 size_flags_vertical = 6
 theme = ExtResource( 21 )
 custom_icons/arrow = ExtResource( 17 )
@@ -250,6 +304,13 @@ expand_icon = true
 items = [ "1280x720", null, false, 1, null, "1920x1080", null, false, 2, null, "2540x1440", null, false, 2, null, "3840x2160", null, false, 3, null ]
 selected = 0
 
+[node name="VSeparator4" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox1/HBoxResolution"]
+margin_left = 860.0
+margin_right = 890.0
+margin_bottom = 325.0
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 30
+
 [node name="HBoxMasterVolume" type="HBoxContainer" parent="OptionsMenu/HBoxContainer/VBox1"]
 margin_top = 337.0
 margin_right = 891.0
@@ -257,8 +318,15 @@ margin_bottom = 662.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="VSeparator4" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox1/HBoxMasterVolume"]
+margin_right = 60.0
+margin_bottom = 325.0
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 60
+
 [node name="MasterVolume" type="TextureRect" parent="OptionsMenu/HBoxContainer/VBox1/HBoxMasterVolume"]
-margin_right = 372.0
+margin_left = 64.0
+margin_right = 387.0
 margin_bottom = 325.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -267,22 +335,22 @@ expand = true
 stretch_mode = 6
 
 [node name="VSeparator" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox1/HBoxMasterVolume"]
-margin_left = 376.0
-margin_right = 462.0
+margin_left = 391.0
+margin_right = 477.0
 margin_bottom = 325.0
 custom_styles/separator = SubResource( 4 )
 custom_constants/separation = 86
 
 [node name="0" type="TextureRect" parent="OptionsMenu/HBoxContainer/VBox1/HBoxMasterVolume"]
-margin_left = 466.0
-margin_right = 481.0
+margin_left = 481.0
+margin_right = 496.0
 margin_bottom = 325.0
 texture = ExtResource( 11 )
 stretch_mode = 6
 
 [node name="HSlider" type="HSlider" parent="OptionsMenu/HBoxContainer/VBox1/HBoxMasterVolume"]
-margin_left = 485.0
-margin_right = 857.0
+margin_left = 500.0
+margin_right = 823.0
 margin_bottom = 325.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -290,16 +358,30 @@ theme = ExtResource( 21 )
 rounded = true
 
 [node name="100" type="TextureRect" parent="OptionsMenu/HBoxContainer/VBox1/HBoxMasterVolume"]
-margin_left = 861.0
-margin_right = 890.0
+margin_left = 827.0
+margin_right = 856.0
 margin_bottom = 325.0
 texture = ExtResource( 12 )
 stretch_mode = 6
 
-[node name="HSeparator2" type="HSeparator" parent="OptionsMenu/HBoxContainer/VBox1"]
+[node name="VSeparator5" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox1/HBoxMasterVolume"]
+margin_left = 860.0
+margin_right = 890.0
+margin_bottom = 325.0
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 30
+
+[node name="MaginSeperators4" type="MarginContainer" parent="OptionsMenu/HBoxContainer/VBox1"]
 margin_top = 666.0
 margin_right = 891.0
 margin_bottom = 670.0
+custom_constants/margin_left = 40
+
+[node name="HSeparator3" type="HSeparator" parent="OptionsMenu/HBoxContainer/VBox1/MaginSeperators4"]
+margin_left = 40.0
+margin_right = 891.0
+margin_bottom = 4.0
+size_flags_vertical = 0
 custom_styles/separator = ExtResource( 18 )
 
 [node name="MarginContainer" type="MarginContainer" parent="OptionsMenu/HBoxContainer/VBox1"]
@@ -315,7 +397,14 @@ margin_bottom = 326.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="VSeparator5" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox1/MarginContainer/HBoxMasterVolume2"]
+margin_right = 30.0
+margin_bottom = 326.0
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 30
+
 [node name="BackOptions" type="TextureButton" parent="OptionsMenu/HBoxContainer/VBox1/MarginContainer/HBoxMasterVolume2"]
+margin_left = 34.0
 margin_right = 437.0
 margin_bottom = 326.0
 size_flags_horizontal = 7
@@ -351,9 +440,15 @@ margin_bottom = 1000.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HSeparator3" type="HSeparator" parent="OptionsMenu/HBoxContainer/VBox2"]
+[node name="MaginSeperators" type="MarginContainer" parent="OptionsMenu/HBoxContainer/VBox2"]
 margin_right = 891.0
 margin_bottom = 4.0
+custom_constants/margin_right = 30
+
+[node name="HSeparator3" type="HSeparator" parent="OptionsMenu/HBoxContainer/VBox2/MaginSeperators"]
+margin_right = 861.0
+margin_bottom = 4.0
+size_flags_vertical = 0
 custom_styles/separator = ExtResource( 18 )
 
 [node name="HBoxMusicVolume" type="HBoxContainer" parent="OptionsMenu/HBoxContainer/VBox2"]
@@ -363,8 +458,15 @@ margin_bottom = 333.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="VSeparator2" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox2/HBoxMusicVolume"]
+margin_right = 30.0
+margin_bottom = 325.0
+custom_styles/separator = SubResource( 4 )
+custom_constants/separation = 30
+
 [node name="MasterVolume" type="TextureRect" parent="OptionsMenu/HBoxContainer/VBox2/HBoxMusicVolume"]
-margin_right = 372.0
+margin_left = 34.0
+margin_right = 357.0
 margin_bottom = 325.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -373,22 +475,22 @@ expand = true
 stretch_mode = 6
 
 [node name="VSeparator" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox2/HBoxMusicVolume"]
-margin_left = 376.0
-margin_right = 462.0
+margin_left = 361.0
+margin_right = 447.0
 margin_bottom = 325.0
 custom_styles/separator = SubResource( 4 )
 custom_constants/separation = 86
 
 [node name="0" type="TextureRect" parent="OptionsMenu/HBoxContainer/VBox2/HBoxMusicVolume"]
-margin_left = 466.0
-margin_right = 481.0
+margin_left = 451.0
+margin_right = 466.0
 margin_bottom = 325.0
 texture = ExtResource( 11 )
 stretch_mode = 6
 
 [node name="HSliderMusic" type="HSlider" parent="OptionsMenu/HBoxContainer/VBox2/HBoxMusicVolume"]
-margin_left = 485.0
-margin_right = 857.0
+margin_left = 470.0
+margin_right = 793.0
 margin_bottom = 325.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -398,11 +500,18 @@ value = 50.0
 rounded = true
 
 [node name="100" type="TextureRect" parent="OptionsMenu/HBoxContainer/VBox2/HBoxMusicVolume"]
-margin_left = 861.0
-margin_right = 890.0
+margin_left = 797.0
+margin_right = 826.0
 margin_bottom = 325.0
 texture = ExtResource( 12 )
 stretch_mode = 6
+
+[node name="VSeparator3" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox2/HBoxMusicVolume"]
+margin_left = 830.0
+margin_right = 890.0
+margin_bottom = 325.0
+custom_styles/separator = SubResource( 4 )
+custom_constants/separation = 60
 
 [node name="HBox" type="HBoxContainer" parent="OptionsMenu/HBoxContainer/VBox2"]
 margin_top = 337.0
@@ -411,10 +520,15 @@ margin_bottom = 662.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HSeparator2" type="HSeparator" parent="OptionsMenu/HBoxContainer/VBox2"]
+[node name="MaginSeperators2" type="MarginContainer" parent="OptionsMenu/HBoxContainer/VBox2"]
 margin_top = 666.0
 margin_right = 891.0
 margin_bottom = 670.0
+custom_constants/margin_right = 30
+
+[node name="HSeparator2" type="HSeparator" parent="OptionsMenu/HBoxContainer/VBox2/MaginSeperators2"]
+margin_right = 861.0
+margin_bottom = 4.0
 custom_styles/separator = ExtResource( 18 )
 
 [node name="MarginContainer" type="MarginContainer" parent="OptionsMenu/HBoxContainer/VBox2"]
@@ -431,6 +545,18 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VSeparator" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox2/MarginContainer/HBoxMasterVolume2"]
+margin_right = 450.0
+margin_bottom = 326.0
+custom_styles/separator = SubResource( 5 )
+custom_constants/separation = 450
+
+[node name="HBoxMasterVolume3" type="HBoxContainer" parent="OptionsMenu/HBoxContainer/VBox2/MarginContainer"]
+margin_right = 891.0
+margin_bottom = 326.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VSeparator" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox2/MarginContainer/HBoxMasterVolume3"]
 margin_right = 450.0
 margin_bottom = 326.0
 custom_styles/separator = SubResource( 5 )
