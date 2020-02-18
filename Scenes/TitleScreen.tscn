@@ -27,7 +27,7 @@
 [ext_resource path="res://GUI/BackgroundMainMenuNoStars4.svg" type="Texture" id=25]
 [ext_resource path="res://GUI/BackgroundMainMenuNoStars3.svg" type="Texture" id=26]
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 25 ) ],
 "loop": true,
@@ -35,22 +35,22 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.298039, 0.298039, 0.298039, 0.176471 )
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 20 )
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 border_color = Color( 1, 1, 1, 1 )
 
@@ -67,8 +67,8 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 957.944, 541.457 )
 scale = Vector2( 8.16336, 8.55957 )
-frames = SubResource( 8 )
-frame = 1
+frames = SubResource( 1 )
+frame = 2
 playing = true
 
 [node name="MainMenu" type="MarginContainer" parent="."]
@@ -112,7 +112,7 @@ margin_right = 1841.0
 margin_bottom = 987.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -224,7 +224,7 @@ margin_right = 1880.0
 margin_bottom = 1040.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -265,7 +265,7 @@ size_flags_vertical = 3
 [node name="VSeparator3" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox1/HBoxResolution"]
 margin_right = 60.0
 margin_bottom = 325.0
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 60
 
 [node name="GameResolution" type="TextureRect" parent="OptionsMenu/HBoxContainer/VBox1/HBoxResolution"]
@@ -282,7 +282,7 @@ stretch_mode = 6
 margin_left = 435.0
 margin_right = 485.0
 margin_bottom = 325.0
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 50
 
 [node name="OptionButton" type="OptionButton" parent="OptionsMenu/HBoxContainer/VBox1/HBoxResolution"]
@@ -294,7 +294,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 6
 theme = ExtResource( 21 )
 custom_icons/arrow = ExtResource( 17 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_disabled = Color( 0.603922, 0.603922, 0.603922, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0, 0.690196, 0.866667, 1 )
@@ -308,7 +308,7 @@ selected = 0
 margin_left = 860.0
 margin_right = 890.0
 margin_bottom = 325.0
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 30
 
 [node name="HBoxMasterVolume" type="HBoxContainer" parent="OptionsMenu/HBoxContainer/VBox1"]
@@ -321,7 +321,7 @@ size_flags_vertical = 3
 [node name="VSeparator4" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox1/HBoxMasterVolume"]
 margin_right = 60.0
 margin_bottom = 325.0
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 60
 
 [node name="MasterVolume" type="TextureRect" parent="OptionsMenu/HBoxContainer/VBox1/HBoxMasterVolume"]
@@ -338,7 +338,7 @@ stretch_mode = 6
 margin_left = 391.0
 margin_right = 477.0
 margin_bottom = 325.0
-custom_styles/separator = SubResource( 4 )
+custom_styles/separator = SubResource( 5 )
 custom_constants/separation = 86
 
 [node name="0" type="TextureRect" parent="OptionsMenu/HBoxContainer/VBox1/HBoxMasterVolume"]
@@ -368,7 +368,7 @@ stretch_mode = 6
 margin_left = 860.0
 margin_right = 890.0
 margin_bottom = 325.0
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 30
 
 [node name="MaginSeperators4" type="MarginContainer" parent="OptionsMenu/HBoxContainer/VBox1"]
@@ -400,7 +400,7 @@ size_flags_vertical = 3
 [node name="VSeparator5" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox1/MarginContainer/HBoxMasterVolume2"]
 margin_right = 30.0
 margin_bottom = 326.0
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 30
 
 [node name="BackOptions" type="TextureButton" parent="OptionsMenu/HBoxContainer/VBox1/MarginContainer/HBoxMasterVolume2"]
@@ -423,14 +423,14 @@ __meta__ = {
 margin_left = 441.0
 margin_right = 891.0
 margin_bottom = 326.0
-custom_styles/separator = SubResource( 5 )
+custom_styles/separator = SubResource( 6 )
 custom_constants/separation = 450
 
 [node name="VSeparator" type="VSeparator" parent="OptionsMenu/HBoxContainer"]
 margin_left = 895.0
 margin_right = 945.0
 margin_bottom = 1000.0
-custom_styles/separator = SubResource( 6 )
+custom_styles/separator = SubResource( 7 )
 custom_constants/separation = 50
 
 [node name="VBox2" type="VBoxContainer" parent="OptionsMenu/HBoxContainer"]
@@ -461,7 +461,7 @@ size_flags_vertical = 3
 [node name="VSeparator2" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox2/HBoxMusicVolume"]
 margin_right = 30.0
 margin_bottom = 325.0
-custom_styles/separator = SubResource( 4 )
+custom_styles/separator = SubResource( 5 )
 custom_constants/separation = 30
 
 [node name="MasterVolume" type="TextureRect" parent="OptionsMenu/HBoxContainer/VBox2/HBoxMusicVolume"]
@@ -478,7 +478,7 @@ stretch_mode = 6
 margin_left = 361.0
 margin_right = 447.0
 margin_bottom = 325.0
-custom_styles/separator = SubResource( 4 )
+custom_styles/separator = SubResource( 5 )
 custom_constants/separation = 86
 
 [node name="0" type="TextureRect" parent="OptionsMenu/HBoxContainer/VBox2/HBoxMusicVolume"]
@@ -510,7 +510,7 @@ stretch_mode = 6
 margin_left = 830.0
 margin_right = 890.0
 margin_bottom = 325.0
-custom_styles/separator = SubResource( 4 )
+custom_styles/separator = SubResource( 5 )
 custom_constants/separation = 60
 
 [node name="HBox" type="HBoxContainer" parent="OptionsMenu/HBoxContainer/VBox2"]
@@ -547,7 +547,7 @@ size_flags_vertical = 3
 [node name="VSeparator" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox2/MarginContainer/HBoxMasterVolume2"]
 margin_right = 450.0
 margin_bottom = 326.0
-custom_styles/separator = SubResource( 5 )
+custom_styles/separator = SubResource( 6 )
 custom_constants/separation = 450
 
 [node name="HBoxMasterVolume3" type="HBoxContainer" parent="OptionsMenu/HBoxContainer/VBox2/MarginContainer"]
@@ -559,7 +559,7 @@ size_flags_vertical = 3
 [node name="VSeparator" type="VSeparator" parent="OptionsMenu/HBoxContainer/VBox2/MarginContainer/HBoxMasterVolume3"]
 margin_right = 450.0
 margin_bottom = 326.0
-custom_styles/separator = SubResource( 5 )
+custom_styles/separator = SubResource( 6 )
 custom_constants/separation = 450
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
