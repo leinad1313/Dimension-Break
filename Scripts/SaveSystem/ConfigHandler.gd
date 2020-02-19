@@ -18,7 +18,6 @@ func _ready():
 		save_settings(_settings)
 	else:
 		print("File already exists")
-	print(load_settings())
 #	var root = get_tree().get_root()
 #	var current_scene = root.get_child(root.get_child_count() - 1)
 #	var Text =  current_scene.get_node("MainMenu/Text")
