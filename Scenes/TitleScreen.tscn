@@ -75,11 +75,11 @@ __meta__ = {
 position = Vector2( 957.944, 541.457 )
 scale = Vector2( 8.16336, 8.55957 )
 frames = SubResource( 1 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Panel" type="Panel" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 0.686275, 0.686275, 0.686275, 0 )
 margin_left = -36.0
 margin_top = -20.0
 margin_right = 1948.0
