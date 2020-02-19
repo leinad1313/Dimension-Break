@@ -30,6 +30,7 @@ config/windows_native_icon="res://TopLogoIco.ico"
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 ConfigHandler="*res://Scripts/SaveSystem/ConfigHandler.gd"
+SceneHandler="*res://Scripts/SceneHandler.gd"
 
 [display]
 
