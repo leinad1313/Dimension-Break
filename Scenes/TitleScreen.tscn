@@ -1,14 +1,12 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://GUI/FullLogoWhite.png" type="Texture" id=1]
-[ext_resource path="res://GUI/Buttons/NewGame.png" type="Texture" id=2]
-[ext_resource path="res://GUI/Buttons/LoadGame.png" type="Texture" id=3]
+[ext_resource path="res://GUI/Buttons/CharSelect.png" type="Texture" id=2]
+[ext_resource path="res://GUI/Buttons/Hover/CharSelectHover.png" type="Texture" id=3]
 [ext_resource path="res://GUI/Buttons/ExitGame.png" type="Texture" id=4]
 [ext_resource path="res://GUI/Buttons/OptionsMenu.png" type="Texture" id=5]
 [ext_resource path="res://GUI/Buttons/Hover/OptionsMenuHover.png" type="Texture" id=6]
 [ext_resource path="res://GUI/Buttons/Hover/ExitGameHover.png" type="Texture" id=7]
-[ext_resource path="res://GUI/Buttons/Hover/NewGameHover.png" type="Texture" id=8]
-[ext_resource path="res://GUI/Buttons/Hover/LoadGameHover.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/MainMenuHandler.gd" type="Script" id=10]
 [ext_resource path="res://GUI/Labels/0Label.png" type="Texture" id=11]
 [ext_resource path="res://GUI/Labels/100Label.png" type="Texture" id=12]
@@ -26,6 +24,13 @@
 [ext_resource path="res://GUI/BackgroundMainMenuNoStars2.svg" type="Texture" id=24]
 [ext_resource path="res://GUI/BackgroundMainMenuNoStars4.svg" type="Texture" id=25]
 [ext_resource path="res://GUI/BackgroundMainMenuNoStars3.svg" type="Texture" id=26]
+[ext_resource path="res://GUI/Buttons/Hover/loginHover.png" type="Texture" id=27]
+[ext_resource path="res://GUI/Buttons/createAcc.png" type="Texture" id=28]
+[ext_resource path="res://GUI/Buttons/login.png" type="Texture" id=29]
+[ext_resource path="res://GUI/Buttons/Hover/createAccHover.png" type="Texture" id=30]
+[ext_resource path="res://Scripts/TextEditFormatPassword.gd" type="Script" id=31]
+[ext_resource path="res://Scripts/TextEditFormatEmail.gd" type="Script" id=32]
+[ext_resource path="res://Scripts/Network/LoginScreen.gd" type="Script" id=33]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -40,6 +45,12 @@ bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.298039, 0.298039, 0.298039, 0.176471 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 24
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = 20
+font_data = ExtResource( 20 )
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -89,6 +100,7 @@ __meta__ = {
 }
 
 [node name="MainMenu" type="MarginContainer" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -133,7 +145,7 @@ __meta__ = {
 margin_left = -1.0
 margin_top = -60.0
 margin_right = 1841.0
-margin_bottom = 987.0
+margin_bottom = 901.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 3 )
@@ -161,38 +173,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewGame" type="TextureButton" parent="MainMenu/Container/InnerContainer"]
+[node name="Characters" type="TextureButton" parent="MainMenu/Container/InnerContainer"]
 margin_right = 1840.0
-margin_bottom = 67.0
+margin_bottom = 101.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 shortcut_in_tooltip = false
 action_mode = 0
 texture_normal = ExtResource( 2 )
-texture_hover = ExtResource( 8 )
+texture_hover = ExtResource( 3 )
 expand = true
 stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoadGame" type="TextureButton" parent="MainMenu/Container/InnerContainer"]
-margin_top = 102.0
-margin_right = 1840.0
-margin_bottom = 169.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-shortcut_in_tooltip = false
-action_mode = 0
-texture_normal = ExtResource( 3 )
-texture_hover = ExtResource( 9 )
-expand = true
-stretch_mode = 5
-
 [node name="Options" type="TextureButton" parent="MainMenu/Container/InnerContainer"]
-margin_top = 204.0
+margin_top = 136.0
 margin_right = 1840.0
-margin_bottom = 271.0
+margin_bottom = 237.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 shortcut_in_tooltip = false
@@ -203,7 +202,7 @@ expand = true
 stretch_mode = 5
 
 [node name="Exit" type="TextureButton" parent="MainMenu/Container/InnerContainer"]
-margin_top = 306.0
+margin_top = 272.0
 margin_right = 1840.0
 margin_bottom = 375.0
 size_flags_horizontal = 3
@@ -216,6 +215,213 @@ expand = true
 stretch_mode = 5
 
 [node name="HSeparator" type="HSeparator" parent="MainMenu/Container"]
+margin_top = 970.0
+margin_right = 1840.0
+margin_bottom = 1000.0
+custom_styles/separator = ExtResource( 18 )
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Login" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
+script = ExtResource( 33 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HTTPRequest" type="HTTPRequest" parent="Login"]
+
+[node name="Panel2" type="Panel" parent="Login"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 1880.0
+margin_bottom = 1040.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="VBoxContainer" parent="Login"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 1880.0
+margin_bottom = 1040.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="HSeparator4" type="HSeparator" parent="Login/Container"]
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 1840.0
+margin_bottom = 30.0
+custom_styles/separator = ExtResource( 18 )
+custom_constants/separation = 30
+
+[node name="Logo2" type="TextureRect" parent="Login/Container"]
+margin_top = 50.0
+margin_right = 1840.0
+margin_bottom = 410.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator2" type="HSeparator" parent="Login/Container"]
+margin_top = 430.0
+margin_right = 1840.0
+margin_bottom = 490.0
+custom_styles/separator = ExtResource( 18 )
+custom_constants/separation = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Login/Container"]
+margin_top = 510.0
+margin_right = 1840.0
+margin_bottom = 870.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VSeparator" type="VSeparator" parent="Login/Container/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 600.0
+margin_bottom = 360.0
+custom_constants/separation = 600
+
+[node name="InnerContainer" type="VBoxContainer" parent="Login/Container/HBoxContainer"]
+margin_left = 604.0
+margin_right = 1236.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 21 )
+custom_constants/separation = 35
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="email" type="TextEdit" parent="Login/Container/HBoxContainer/InnerContainer"]
+margin_right = 632.0
+margin_bottom = 63.0
+hint_tooltip = "Email"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 21 )
+text = "muench_daniel@gmx.net
+"
+draw_spaces = true
+context_menu_enabled = false
+shortcut_keys_enabled = false
+smooth_scrolling = true
+v_scroll_speed = 0.0
+script = ExtResource( 32 )
+
+[node name="password" type="TextEdit" parent="Login/Container/HBoxContainer/InnerContainer"]
+margin_top = 98.0
+margin_right = 632.0
+margin_bottom = 161.0
+hint_tooltip = "Password"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 21 )
+text = "Password"
+draw_spaces = true
+shortcut_keys_enabled = false
+smooth_scrolling = true
+script = ExtResource( 31 )
+
+[node name="Error" type="RichTextLabel" parent="Login/Container/HBoxContainer/InnerContainer"]
+margin_top = 196.0
+margin_right = 632.0
+margin_bottom = 259.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 9 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+meta_underlined = false
+tab_size = 6
+text = "
+
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Login/Container/HBoxContainer/InnerContainer"]
+margin_top = 294.0
+margin_right = 632.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="login" type="TextureButton" parent="Login/Container/HBoxContainer/InnerContainer/HBoxContainer"]
+margin_right = 187.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 29 )
+texture_hover = ExtResource( 27 )
+expand = true
+stretch_mode = 5
+
+[node name="VSeparator3" type="VSeparator" parent="Login/Container/HBoxContainer/InnerContainer/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 191.0
+margin_right = 441.0
+margin_bottom = 66.0
+custom_constants/separation = 250
+
+[node name="createAcc" type="TextureButton" parent="Login/Container/HBoxContainer/InnerContainer/HBoxContainer"]
+margin_left = 445.0
+margin_right = 632.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 28 )
+texture_hover = ExtResource( 30 )
+expand = true
+stretch_mode = 5
+
+[node name="VSeparator2" type="VSeparator" parent="Login/Container/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 1240.0
+margin_right = 1840.0
+margin_bottom = 360.0
+custom_constants/separation = 600
+
+[node name="HSeparator3" type="HSeparator" parent="Login/Container"]
+margin_top = 890.0
+margin_right = 1840.0
+margin_bottom = 950.0
+custom_styles/separator = ExtResource( 18 )
+custom_constants/separation = 60
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="Login/Container"]
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0 )
 margin_top = 970.0
 margin_right = 1840.0
 margin_bottom = 1000.0
@@ -654,9 +860,10 @@ stream = ExtResource( 19 )
 volume_db = -80.0
 autoplay = true
 bus = "Music"
-[connection signal="pressed" from="MainMenu/Container/InnerContainer/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="MainMenu/Container/InnerContainer/Characters" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="MainMenu/Container/InnerContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="MainMenu/Container/InnerContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Login/Container/HBoxContainer/InnerContainer/HBoxContainer/login" to="Login" method="_on_login_pressed"]
 [connection signal="item_selected" from="OptionsMenu/HBoxContainer/VBox1/HBoxResolution/OptionButton" to="." method="_on_OptionButton_item_selected"]
 [connection signal="value_changed" from="OptionsMenu/HBoxContainer/VBox1/HBoxMasterVolume/HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="value_changed" from="OptionsMenu/HBoxContainer/VBox1/HBoxMusicVolume/HSliderMusic" to="." method="_on_HSliderMusic_value_changed"]
