@@ -7,4 +7,14 @@ func _ready():
 
 
 func _on_MainMenu_pressed():
-	$"/root/SceneHandler".goto_scene("res://Scenes/TitleScreen.tscn")
+	$"/root/SceneHandler".goto_scene("res://Scenes/TitleScreenOffline.tscn")
+
+
+func _on_BackSelect_pressed():
+	$CharSelect.show()
+	$Creator.hide()
+
+
+func _on_NewChar_pressed():
+	$CharSelect.hide()
+	$Creator.show()

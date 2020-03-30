@@ -7,6 +7,7 @@ onready var email = ""
 func setEmail(data):
 	email = data
 
+# warning-ignore:unused_argument
 func getEmail(data):
 	return email
 
